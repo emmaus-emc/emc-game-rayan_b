@@ -60,7 +60,16 @@ var tekenAlles = function () {
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
-
+  fill("black");
+  rect(spelerX - 7.5, spelerY - 25, 15, 20);
+  fill("gray");
+  rect(spelerX - 25, spelerY, 12.5, 25);
+  fill("gray");
+  rect(spelerX + 12.5, spelerY, 12.5, 25);
+  fill("red");
+  rect(spelerX - 15, spelerY - 5, 12.5, 5);
+    fill("red");
+  rect(spelerX + 2.5, spelerY - 5, 12.5, 5);
   // punten en health
 
 };
