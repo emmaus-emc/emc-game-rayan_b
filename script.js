@@ -18,6 +18,8 @@ var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var KEY_LEFT = 37
 var KEY_RIGHT = 39
+var KEY_UP = 38
+var KEy_DOWN = 40
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -33,11 +35,19 @@ var beweegAlles = function () {
 
   // speler
   if (keyIsDown(KEY_LEFT)) {
-    spelerX = spelerX - 5;
+    spelerX = spelerX - 12;
   }
 
  if (keyIsDown(KEY_RIGHT)) {
-    spelerX = spelerX + 5;
+    spelerX = spelerX + 12;
+  }
+
+ if (keyIsDown(KEY_UP)) {
+    spelerY = spelerY - 12;
+  }
+
+ if (keyIsDown(KEy_DOWN)) {
+    spelerY = spelerY + 12;
   }
 
 };
@@ -49,11 +59,17 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-if (spelerX == 1255) {
-  spelerX = spelerX - 5
+if (spelerX >= 1255) {
+  spelerX = spelerX - 12
 }
-if (spelerX == 25) {
-  spelerX = spelerX + 5
+if (spelerX <= 25) {
+  spelerX = spelerX + 12
+}
+if (spelerY >= 500) {
+  spelerY = spelerY - 12
+}
+if (spelerY <= 695) {
+  spelerY = spelerY + 12
 }
   // botsing kogel tegen vijand
 
@@ -70,6 +86,16 @@ var tekenAlles = function () {
   }
 
  if (keyIsDown(KEY_RIGHT)) {
+    createCanvas(1280, 720);
+    background('blue');
+  }
+
+ if (keyIsDown(KEy_DOWN)) {
+    createCanvas(1280, 720);
+    background('blue');
+  }
+
+ if (keyIsDown(KEY_UP)) {
     createCanvas(1280, 720);
     background('blue');
   }
