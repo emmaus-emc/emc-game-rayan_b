@@ -61,18 +61,23 @@ vijandY = vijandY + 5
  */
 var verwerkBotsing = function () {
   // botsing speler tegen barrier
-if (spelerX >= 1260) {
+ if (spelerX >= 1260) {
   spelerX = spelerX - 12
-}
-if (spelerX <= 20) {
+ }
+ if (spelerX <= 20) {
   spelerX = spelerX + 12
-}
-if (spelerY >= 500) {
+ }
+ if (spelerY >= 500) {
   spelerY = spelerY - 12
-}
-if (spelerY <= 695) {
+ }
+ if (spelerY <= 695) {
   spelerY = spelerY + 12
-}
+ }
+
+  // botsing vijand tegen barrier
+ if (vijandY >= 720) {
+   vijandY = 0
+ }
 
   // botsing speler tegen vijand
 
