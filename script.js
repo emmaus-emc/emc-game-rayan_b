@@ -16,6 +16,8 @@ var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
+var vijandX = 600
+var vijandY = 0
 var KEY_LEFT = 37
 var KEY_RIGHT = 39
 var KEY_UP = 38
@@ -58,11 +60,11 @@ var beweegAlles = function () {
  * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function () {
-  // botsing speler tegen vijand
-if (spelerX >= 1255) {
+  // botsing speler tegen barrier
+if (spelerX >= 1260) {
   spelerX = spelerX - 12
 }
-if (spelerX <= 25) {
+if (spelerX <= 20) {
   spelerX = spelerX + 12
 }
 if (spelerY >= 500) {
@@ -71,6 +73,9 @@ if (spelerY >= 500) {
 if (spelerY <= 695) {
   spelerY = spelerY + 12
 }
+
+  // botsing speler tegen vijand
+
   // botsing kogel tegen vijand
 
 };
@@ -101,6 +106,18 @@ var tekenAlles = function () {
   }
 
   // vijand
+  fill("white");
+  rect(vijandX - 25, vijandY, 50, 50);
+  fill("red");
+  rect(vijandX - 25, vijandY, 12.5, 25);
+  fill("red");
+  rect(vijandX + 12.5, vijandY, 12.5, 25);
+  fill("red");
+  rect(vijandX - 25, vijandY + 40, 50, 10);
+  fill("black");
+  rect(vijandX + 12.5, vijandY + 12.5, 10, 10);
+  fill("black");
+  rect(vijandX - 25, vijandY + 12.5, 10, 10);
 
   // kogel
 
