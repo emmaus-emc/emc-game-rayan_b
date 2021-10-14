@@ -32,7 +32,7 @@ var KEy_DOWN = 40
  */
 var beweegAlles = function () {
   // vijand
-vijandY = vijandY + 5
+  vijandY = vijandY + 5
   // kogel
 
   // speler
@@ -40,15 +40,15 @@ vijandY = vijandY + 5
     spelerX = spelerX - 12;
   }
 
- if (keyIsDown(KEY_RIGHT)) {
+  if (keyIsDown(KEY_RIGHT)) {
     spelerX = spelerX + 12;
   }
 
- if (keyIsDown(KEY_UP)) {
+  if (keyIsDown(KEY_UP)) {
     spelerY = spelerY - 12;
   }
 
- if (keyIsDown(KEy_DOWN)) {
+  if (keyIsDown(KEy_DOWN)) {
     spelerY = spelerY + 12;
   }
 
@@ -61,23 +61,25 @@ vijandY = vijandY + 5
  */
 var verwerkBotsing = function () {
   // botsing speler tegen barrier
- if (spelerX >= 1260) {
-  spelerX = spelerX - 12
- }
- if (spelerX <= 20) {
-  spelerX = spelerX + 12
- }
- if (spelerY >= 500) {
-  spelerY = spelerY - 12
- }
- if (spelerY <= 695) {
-  spelerY = spelerY + 12
- }
+  if (spelerX >= 1260) {
+    spelerX = spelerX - 12
+  }
+  if (spelerX <= 20) {
+    spelerX = spelerX + 12
+  }
+  if (spelerY >= 500) {
+    spelerY = spelerY - 12
+  }
+  if (spelerY <= 695) {
+    spelerY = spelerY + 12
+  }
 
   // botsing vijand tegen barrier
- if (vijandY >= 720) {
-   vijandY = 0
- }
+  if (vijandY >= 720) {
+    vijandY = 0
+    let numbers = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100'];
+    vijandX = random(numbers);
+  }
 
   // botsing speler tegen vijand
 
@@ -90,22 +92,22 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
- if (keyIsDown(KEY_LEFT)) {
+  if (keyIsDown(KEY_LEFT)) {
     createCanvas(1280, 720);
     background('blue');
   }
 
- if (keyIsDown(KEY_RIGHT)) {
+  if (keyIsDown(KEY_RIGHT)) {
     createCanvas(1280, 720);
     background('blue');
   }
 
- if (keyIsDown(KEy_DOWN)) {
+  if (keyIsDown(KEy_DOWN)) {
     createCanvas(1280, 720);
     background('blue');
   }
 
- if (keyIsDown(KEY_UP)) {
+  if (keyIsDown(KEY_UP)) {
     createCanvas(1280, 720);
     background('blue');
   }
@@ -143,7 +145,7 @@ var tekenAlles = function () {
   rect(spelerX + 12.5, spelerY, 12.5, 25);
   fill("red");
   rect(spelerX - 15, spelerY - 5, 12.5, 5);
-    fill("red");
+  fill("red");
   rect(spelerX + 2.5, spelerY - 5, 12.5, 5);
 
 
@@ -186,7 +188,7 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    
+
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
