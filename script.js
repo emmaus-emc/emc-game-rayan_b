@@ -32,7 +32,7 @@ var KEy_DOWN = 40
  */
 var beweegAlles = function () {
   // vijand
-
+vijandY = vijandY + 5
   // kogel
 
   // speler
@@ -101,6 +101,10 @@ var tekenAlles = function () {
   }
 
  if (keyIsDown(KEY_UP)) {
+    createCanvas(1280, 720);
+    background('blue');
+  }
+  if (vijandY) {
     createCanvas(1280, 720);
     background('blue');
   }
