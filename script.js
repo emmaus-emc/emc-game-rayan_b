@@ -82,7 +82,13 @@ var verwerkBotsing = function () {
   }
 
   // botsing speler tegen vijand
-
+  if ((spelerX - vijandX) < 52 && 
+  (spelerX - vijandX) > -52 && 
+  (spelerY - vijandY) < 52 && 
+  (spelerY - vijandY) > -52) {
+    console.log("botsing")
+    spelStatus = GAMEOVER;
+  }
   // botsing kogel tegen vijand
 
 };
@@ -118,17 +124,19 @@ var tekenAlles = function () {
 
   // vijand
   fill("white");
-  rect(vijandX - 25, vijandY, 50, 50);
+  rect(vijandX - 25, vijandY-25, 50, 50);
   fill("red");
-  rect(vijandX - 25, vijandY, 12.5, 25);
+  rect(vijandX - 25, vijandY-25, 12.5, 25);
   fill("red");
-  rect(vijandX + 12.5, vijandY, 12.5, 25);
+  rect(vijandX + 12.5, vijandY-25, 12.5, 25);
   fill("red");
-  rect(vijandX - 25, vijandY + 40, 50, 10);
+  rect(vijandX - 25, vijandY + 40-25, 50, 10);
   fill("black");
-  rect(vijandX + 12.5, vijandY + 12.5, 10, 10);
+  rect(vijandX + 12.5, vijandY + 12.50-25, 10, 10);
   fill("black");
-  rect(vijandX - 25, vijandY + 12.5, 10, 10);
+  rect(vijandX - 25, vijandY + 12.5-25, 10, 10);
+    fill("purple");
+  ellipse(vijandX,vijandY,5,5);
 
   // kogel
 
@@ -196,6 +204,9 @@ function draw() {
 
 
   if (spelStatus === GAMEOVER) {
+    textSize(100)
+    text("ded", 500, 350)
+
     // teken game-over scherm
 
   }
