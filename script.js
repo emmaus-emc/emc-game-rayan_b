@@ -22,6 +22,7 @@ var KEY_LEFT = 37
 var KEY_RIGHT = 39
 var KEY_UP = 38
 var KEy_DOWN = 40
+var hp = 100
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -32,7 +33,7 @@ var KEy_DOWN = 40
  */
 var beweegAlles = function () {
   // vijand
-  vijandY = vijandY + 5
+  vijandY = vijandY + 10
   // kogel
 
   // speler
@@ -82,12 +83,13 @@ var verwerkBotsing = function () {
   }
 
   // botsing speler tegen vijand
-  if ((spelerX - vijandX) < 52 && 
-  (spelerX - vijandX) > -52 && 
-  (spelerY - vijandY) < 52 && 
-  (spelerY - vijandY) > -52) {
+
+  if ((spelerX - vijandX) < 52 &&
+    (spelerX - vijandX) > -52 &&
+    (spelerY - vijandY) < 52 &&
+    (spelerY - vijandY) > -52) {
     console.log("botsing")
-    spelStatus = GAMEOVER;
+    hp = hp - 1
   }
   // botsing kogel tegen vijand
 
@@ -124,19 +126,19 @@ var tekenAlles = function () {
 
   // vijand
   fill("white");
-  rect(vijandX - 25, vijandY-25, 50, 50);
+  rect(vijandX - 25, vijandY - 25, 50, 50);
   fill("red");
-  rect(vijandX - 25, vijandY-25, 12.5, 25);
+  rect(vijandX - 25, vijandY - 25, 12.5, 25);
   fill("red");
-  rect(vijandX + 12.5, vijandY-25, 12.5, 25);
+  rect(vijandX + 12.5, vijandY - 25, 12.5, 25);
   fill("red");
-  rect(vijandX - 25, vijandY + 40-25, 50, 10);
+  rect(vijandX - 25, vijandY + 40 - 25, 50, 10);
   fill("black");
-  rect(vijandX + 12.5, vijandY + 12.50-25, 10, 10);
+  rect(vijandX + 12.5, vijandY + 12.50 - 25, 10, 10);
   fill("black");
-  rect(vijandX - 25, vijandY + 12.5-25, 10, 10);
-    fill("purple");
-  ellipse(vijandX,vijandY,5,5);
+  rect(vijandX - 25, vijandY + 12.5 - 25, 10, 10);
+  fill("purple");
+  ellipse(vijandX, vijandY, 5, 5);
 
   // kogel
 
@@ -158,6 +160,7 @@ var tekenAlles = function () {
 
 
   // punten en health
+  console.log(hp);
 
 };
 
@@ -205,7 +208,7 @@ function draw() {
 
   if (spelStatus === GAMEOVER) {
     textSize(100)
-    text("ded", 500, 350)
+    text("game over", 425, 350)
 
     // teken game-over scherm
 
