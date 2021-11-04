@@ -171,9 +171,9 @@ var tekenAlles = function () {
     if (hp <= 0){
     spelStatus = GAMEOVER;
   }
-  textSize(100);
-  text(punten, 1000, 100);
-  floor(punten);
+  textSize(100); 
+  text(floor(punten), 1000, 100);
+ 
 };
 
 /**
