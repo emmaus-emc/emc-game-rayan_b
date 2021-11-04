@@ -161,7 +161,9 @@ var tekenAlles = function () {
 
   // punten en health
   console.log(hp);
-
+    if (hp <= 0){
+    spelStatus = GAMEOVER;
+  }
 };
 
 /**
@@ -184,7 +186,6 @@ var checkGameOver = function () {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
-
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
 }
