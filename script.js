@@ -23,6 +23,7 @@ var KEY_RIGHT = 39
 var KEY_UP = 38
 var KEy_DOWN = 40
 var hp = 100
+var punten = 0
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -60,7 +61,7 @@ var beweegAlles = function () {
  * Verwijdert neergeschoten vijanden
  * Updatet globale variabelen punten en health
  */
-var verwerkBotsing = function () {
+var verwerkBotsingEnPunten = function () {
   // botsing speler tegen barrier
   if (spelerX >= 1260) {
     spelerX = spelerX - 12
@@ -92,7 +93,10 @@ var verwerkBotsing = function () {
     hp = hp - 1
   }
   // botsing kogel tegen vijand
+  
 
+  // punten erbij
+  punten=punten+0.02;
 };
 
 /**
@@ -160,10 +164,16 @@ var tekenAlles = function () {
 
 
   // punten en health
+  textSize(100)
+  text(hp, 100, 100)
+
   console.log(hp);
     if (hp <= 0){
     spelStatus = GAMEOVER;
   }
+  textSize(100);
+  text(punten, 1000, 100);
+  floor(punten);
 };
 
 /**
@@ -198,7 +208,8 @@ function setup() {
 function draw() {
   if (spelStatus === SPELEN) {
     beweegAlles();
-    verwerkBotsing();
+    verwerkBotsingEnPunten();
+
     tekenAlles();
 
     if (checkGameOver()) {
