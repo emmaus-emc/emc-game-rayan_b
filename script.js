@@ -106,26 +106,26 @@ var tekenAlles = function () {
   // achtergrond
   if (keyIsDown(KEY_LEFT)) {
     createCanvas(1280, 720);
-    background('blue');
+    background(0, 55, 133);
   }
 
   if (keyIsDown(KEY_RIGHT)) {
     createCanvas(1280, 720);
-    background('blue');
+    background(0, 55, 133);
   }
 
   if (keyIsDown(KEy_DOWN)) {
     createCanvas(1280, 720);
-    background('blue');
+    background(0, 55, 133);
   }
 
   if (keyIsDown(KEY_UP)) {
     createCanvas(1280, 720);
-    background('blue');
+    background(0, 55, 133);
   }
   if (vijandY) {
     createCanvas(1280, 720);
-    background('blue');
+    background(0, 55, 133);
   }
 
   // vijand
@@ -165,14 +165,16 @@ var tekenAlles = function () {
 
   // punten en health
   textSize(100)
-  text(hp, 100, 100)
+  text("hp:", 25, 100)
+  textSize(100)
+  text(hp, 170, 100)
 
   console.log(hp);
     if (hp <= 0){
     spelStatus = GAMEOVER;
   }
   textSize(100); 
-  text(floor(punten), 1000, 100);
+  text(floor(punten), 1100, 100);
  
 };
 
@@ -197,7 +199,7 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background(0, 55, 133);
 }
 
 /**
