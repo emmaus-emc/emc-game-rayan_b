@@ -10,9 +10,10 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-const SPELEN = 1;
-const GAMEOVER = 2;
-var spelStatus = SPELEN;
+const STARTSCHERM = 1;
+const SPELEN = 2;
+const GAMEOVER = 3;
+var spelStatus = STARTSCHERM;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
@@ -93,11 +94,26 @@ var verwerkBotsingEnPunten = function () {
     hp = hp - 1
   }
   // botsing kogel tegen vijand
-  
+
 
   // punten erbij
-  punten=punten+0.02;
+  punten = punten + 0.02;
 };
+
+
+/**
+ * Tekent spelscherm
+ */
+var tekenStart = function () {
+  fill("black");
+  rect(0, 0, 1280, 720);
+  textSize(100);
+  fill("red");
+  text("CLICK TO START", 250, 400);
+}
+
+
+
 
 /**
  * Tekent spelscherm
@@ -170,12 +186,12 @@ var tekenAlles = function () {
   text(hp, 170, 100)
 
   console.log(hp);
-    if (hp <= 0){
+  if (hp <= 0) {
     spelStatus = GAMEOVER;
   }
-  textSize(100); 
+  textSize(100);
   text(floor(punten), 1100, 100);
- 
+
 };
 
 /**
@@ -208,6 +224,12 @@ function setup() {
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
+  if (spelStatus === STARTSCHERM) {
+    tekenStart();
+    if (mouseIsPressed) {
+      spelStatus = SPELEN;
+    }
+  }
   if (spelStatus === SPELEN) {
     beweegAlles();
     verwerkBotsingEnPunten();
