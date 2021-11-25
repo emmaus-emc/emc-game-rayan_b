@@ -243,8 +243,23 @@ function draw() {
 
 
   if (spelStatus === GAMEOVER) {
+    createCanvas(1280, 720);
+    background("black");
+
+    textSize(100)
+    text("hp:", 25, 100)
+
+    textSize(100)
+    text(hp, 170, 100)
+
     textSize(100)
     text("game over", 425, 350)
+
+    textSize(100)
+    text("points:", 800, 100)
+
+    textSize(100);
+    text(floor(punten), 1100, 100);
 
     // teken game-over scherm
 
