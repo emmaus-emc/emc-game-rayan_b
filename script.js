@@ -17,8 +17,13 @@ var spelStatus = STARTSCHERM;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
+
 var vijandX1 = 100
 var vijandY1 = 0
+var vijandXrij = [100, 250, 550, 400, 700, 850, 1000, 1150];
+var vijandYrij = [-200, -300, -400, -200, -300, -200, -100, -100];
+
+
 /*
 var vijandX2 = 300
 var vijandY2 = 0
@@ -41,7 +46,13 @@ var punten = 0
  */
 var beweegAlles = function () {
   // vijanden
-  vijandY1 = vijandY1 + 10
+  vijandY1 = vijandY1 + 6
+  if (punten >= 10 && punten <= 15) {
+    vijandY1 = vijandY1 + 1
+  }
+  if (punten >= 15) {
+    vijandY1 = vijandY1 + 4
+  }
   /*
   vijandY2 = vijandY2 + 10
   vijandY3 = vijandY3 + 10
@@ -88,8 +99,13 @@ var verwerkBotsingEnPunten = function () {
   }
 
   // botsing vijand tegen barrier
+    for (let i = 0; i < 8; i = i + 1){
+     if (vijandY1 >= 720) {
+     vijandY1 = vijandXrij[i];
+    } 
+    }
   if (vijandY1 >= 720) {
-    vijandY1 = 0
+    vijandY1 = 0;
     /*let numbers = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100'];
     vijandX1 = random(numbers);*/
   }
@@ -108,14 +124,14 @@ var verwerkBotsingEnPunten = function () {
 
   // botsing speler tegen vijand
 
-  for (let i = 0; i < 11; i = i + 1.5) {
-  if ((spelerX - vijandX1) < 52 &&
-    (spelerX - vijandX1) > -52 &&
-    (spelerY - vijandY1) < 52 &&
-    (spelerY - vijandY1) > -52) {
-    console.log("botsing")
-    hp = hp - 1
-  }
+  for (let i = 0; i < 8; i = i + 1) {
+    if ((spelerX - (vijandXrij[i])) < 52 &&
+      (spelerX - (vijandXrij[i])) > -52 &&
+      (spelerY - (vijandY1)) < 52 &&
+      (spelerY - (vijandY1)) > -52) {
+      console.log("botsing")
+      hp = hp - 1
+    }
   }
 
   if ((spelerX - vijandX1) < 52 &&
@@ -194,33 +210,33 @@ var tekenAlles = function () {
     createCanvas(1280, 720);
     background(0, 55, 133);
   }
-/*
-  if (vijandY2) {
-    createCanvas(1280, 720);
-    background(0, 55, 133);
-  }
-
-  if (vijandY3) {
-    createCanvas(1280, 720);
-    background(0, 55, 133);
-  }
-*/
+  /*
+    if (vijandY2) {
+      createCanvas(1280, 720);
+      background(0, 55, 133);
+    }
+  
+    if (vijandY3) {
+      createCanvas(1280, 720);
+      background(0, 55, 133);
+    }
+  */
   // vijanden
-  for (let i = 0; i < 11; i = i + 1.5) {
-  fill("white");
-  rect(vijandX1 + i * 100 - 25, vijandY1 - 25, 50, 50);
-  fill("red");
-  rect(vijandX1 + i * 100 - 25, vijandY1 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX1 + i * 100 + 12.5, vijandY1 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX1 + i * 100 - 25, vijandY1 + 40 - 25, 50, 10);
-  fill("black");
-  rect(vijandX1 + i * 100 + 12.5, vijandY1 + 12.50 - 25, 10, 10);
-  fill("black");
-  rect(vijandX1 + i * 100 - 25, vijandY1 + 12.5 - 25, 10, 10);
-  fill("purple");
-  ellipse(vijandX1 + i * 100, vijandY1, 5, 5);
+  for (let i = 0; i < 8; i = i + 1) {
+    fill("white");
+    rect(vijandXrij[i] - 25, vijandY1 - 25, 50, 50);
+    fill("red");
+    rect(vijandXrij[i] - 25, vijandY1 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandXrij[i] + 12.5, vijandY1 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandXrij[i] - 25, vijandY1 + 40 - 25, 50, 10);
+    fill("black");
+    rect(vijandXrij[i] + 12.5, vijandY1 + 12.50 - 25, 10, 10);
+    fill("black");
+    rect(vijandXrij[i] - 25, vijandY1 + 12.5 - 25, 10, 10);
+    fill("purple");
+    ellipse(vijandXrij[i], vijandY1, 5, 5);
   }
 
   fill("white");
@@ -237,37 +253,37 @@ var tekenAlles = function () {
   rect(vijandX1 - 25, vijandY1 + 12.5 - 25, 10, 10);
   fill("purple");
   ellipse(vijandX1, vijandY1, 5, 5);
-/*
-  fill("white");
-  rect(vijandX2 - 25, vijandY2 - 25, 50, 50);
-  fill("red");
-  rect(vijandX2 - 25, vijandY2 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX2 + 12.5, vijandY2 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX2 - 25, vijandY2 + 40 - 25, 50, 10);
-  fill("black");
-  rect(vijandX2 + 12.5, vijandY2 + 12.50 - 25, 10, 10);
-  fill("black");
-  rect(vijandX2 - 25, vijandY2 + 12.5 - 25, 10, 10);
-  fill("purple");
-  ellipse(vijandX2, vijandY2, 5, 5);
-
-  fill("white");
-  rect(vijandX3 - 25, vijandY3 - 25, 50, 50);
-  fill("red");
-  rect(vijandX3 - 25, vijandY3 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX3 + 12.5, vijandY3 - 25, 12.5, 25);
-  fill("red");
-  rect(vijandX3 - 25, vijandY3 + 40 - 25, 50, 10);
-  fill("black");
-  rect(vijandX3 + 12.5, vijandY3 + 12.50 - 25, 10, 10);
-  fill("black");
-  rect(vijandX3 - 25, vijandY3 + 12.5 - 25, 10, 10);
-  fill("purple");
-  ellipse(vijandX3, vijandY3, 5, 5);
-*/
+  /*
+    fill("white");
+    rect(vijandX2 - 25, vijandY2 - 25, 50, 50);
+    fill("red");
+    rect(vijandX2 - 25, vijandY2 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandX2 + 12.5, vijandY2 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandX2 - 25, vijandY2 + 40 - 25, 50, 10);
+    fill("black");
+    rect(vijandX2 + 12.5, vijandY2 + 12.50 - 25, 10, 10);
+    fill("black");
+    rect(vijandX2 - 25, vijandY2 + 12.5 - 25, 10, 10);
+    fill("purple");
+    ellipse(vijandX2, vijandY2, 5, 5);
+  
+    fill("white");
+    rect(vijandX3 - 25, vijandY3 - 25, 50, 50);
+    fill("red");
+    rect(vijandX3 - 25, vijandY3 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandX3 + 12.5, vijandY3 - 25, 12.5, 25);
+    fill("red");
+    rect(vijandX3 - 25, vijandY3 + 40 - 25, 50, 10);
+    fill("black");
+    rect(vijandX3 + 12.5, vijandY3 + 12.50 - 25, 10, 10);
+    fill("black");
+    rect(vijandX3 - 25, vijandY3 + 12.5 - 25, 10, 10);
+    fill("purple");
+    ellipse(vijandX3, vijandY3, 5, 5);
+  */
   // kogel
 
   // speler
@@ -368,7 +384,7 @@ function draw() {
 
     textSize(100);
     text(floor(punten), 1100, 100);
-  
+
     fill("white");
     rect(spelerX - 25, spelerY - 25, 50, 50);
     fill("black");
